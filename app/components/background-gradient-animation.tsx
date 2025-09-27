@@ -133,8 +133,8 @@ export const BackgroundGradientAnimation = ({
   return (
     <div
       className={classNames(
-        'h-screen w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]',
-        containerClassName,
+        'fixed top-0 left-0 w-full h-full overflow-hidden -z-10',
+        className,
       )}
     >
       <svg className="hidden">
@@ -155,70 +155,90 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-      <div className={classNames(className)}>{children}</div>
-      <div
-        className={classNames(
-          'gradients-container h-full w-full blur-lg',
-          isSafari ? 'blur-2xl' : '[filter:url(#blurMe)_blur(40px)]',
-        )}
-      >
-        <div
-          className={classNames(
-            `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:center_center]`,
-            `animate-first`,
-            `opacity-100`,
-          )}
-        ></div>
-        <div
-          className={classNames(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-400px)]`,
-            `animate-second`,
-            `opacity-100`,
-          )}
-        ></div>
-        <div
-          className={classNames(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%+400px)]`,
-            `animate-third`,
-            `opacity-100`,
-          )}
-        ></div>
-        <div
-          className={classNames(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-200px)]`,
-            `animate-fourth`,
-            `opacity-70`,
-          )}
-        ></div>
-        <div
-          className={classNames(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
-            `animate-fifth`,
-            `opacity-100`,
-          )}
-        ></div>
-
-        {interactive && (
+      <div className={classNames('relative h-full w-full', containerClassName)}>
+        <div className="absolute inset-0">
           <div
-            ref={interactiveRef}
-            onMouseMove={handleMouseMove}
             className={classNames(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
-              `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
-              `opacity-70`,
+              'absolute inset-0',
+              isSafari ? 'blur-2xl' : 'blur-[100px]',
             )}
-          ></div>
-        )}
+            style={{
+              background:
+                'radial-gradient(at 71% 77%, var(--first-color) 0px, transparent 50%)',
+              backgroundBlendMode: 'screen',
+              filter: 'blur(100px)',
+              transform: 'translate3d(0, 0, 0)',
+              zIndex: -10,
+            }}
+          />
+          <div
+            className={classNames(
+              'absolute inset-0',
+              isSafari ? 'blur-2xl' : 'blur-[100px]',
+            )}
+            style={{
+              background:
+                'radial-gradient(at 21% 30%, var(--second-color) 0px, transparent 50%)',
+              backgroundBlendMode: 'screen',
+              transform: 'translate3d(0, 0, 0)',
+              zIndex: -10,
+            }}
+          />
+          <div
+            className={classNames(
+              'absolute inset-0',
+              isSafari ? 'blur-2xl' : 'blur-[100px]',
+            )}
+            style={{
+              background:
+                'radial-gradient(at 51% 80%, var(--third-color) 0px, transparent 50%)',
+              backgroundBlendMode: 'screen',
+              transform: 'translate3d(0, 0, 0)',
+              zIndex: -10,
+            }}
+          />
+          <div
+            className={classNames(
+              'absolute inset-0',
+              isSafari ? 'blur-2xl' : 'blur-[100px]',
+            )}
+            style={{
+              background:
+                'radial-gradient(at 95% 74%, var(--fourth-color) 0px, transparent 50%)',
+              backgroundBlendMode: 'screen',
+              transform: 'translate3d(0, 0, 0)',
+              zIndex: -10,
+            }}
+          />
+          <div
+            className={classNames(
+              'absolute inset-0',
+              isSafari ? 'blur-2xl' : 'blur-[100px]',
+            )}
+            style={{
+              background:
+                'radial-gradient(at 25% 20%, var(--fifth-color) 0px, transparent 50%)',
+              backgroundBlendMode: 'screen',
+              transform: 'translate3d(0, 0, 0)',
+              zIndex: -10,
+            }}
+          />
+          {interactive && (
+            <div
+              ref={interactiveRef}
+              onMouseMove={handleMouseMove}
+              className="absolute h-20 w-20 rounded-full opacity-70"
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                background: `radial-gradient(circle at center, rgba(var(--pointer-color), 0.8) 0%, rgba(var(--pointer-color), 0) 70%)`,
+                zIndex: -10,
+              }}
+            />
+          )}
+        </div>
+        {children}
       </div>
     </div>
   );
