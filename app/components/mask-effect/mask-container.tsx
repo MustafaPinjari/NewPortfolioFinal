@@ -48,11 +48,21 @@ export const MaskContainer = ({
   }, []);
 
   const maskSize = isHovered ? revealSize : size;
+  const maskPosition =
+    mousePosition.x !== null && mousePosition.y !== null
+      ? `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2}px`
+      : '0px 0px';
 
   return (
     <motion.div
       ref={containerRef}
       className={classNames('relative h-screen', className)}
+      style={
+        {
+          '--mask-position': maskPosition,
+          '--mask-size': `${maskSize}px`,
+        } as React.CSSProperties
+      }
       animate={{
         backgroundColor: isHovered ? 'var(--slate-900)' : 'var(--white)',
       }}
@@ -61,17 +71,10 @@ export const MaskContainer = ({
       }}
     >
       <motion.div
-        className="absolute flex h-full w-full items-center justify-center bg-white text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] [mask-size:40px] dark:bg-black"
-        animate={{
-          WebkitMaskPosition:
-            mousePosition.x !== null && mousePosition.y !== null
-              ? `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2}px`
-              : '0px 0px',
-          WebkitMaskSize: `${maskSize}px`,
-        }}
+        className="absolute flex h-full w-full items-center justify-center bg-white text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] [mask-size:var(--mask-size,40px)] [mask-position:var(--mask-position,0_0)] dark:bg-black"
         transition={{
-          maskSize: { duration: 0.3, ease: 'easeInOut' },
-          maskPosition: { duration: 0.15, ease: 'linear' },
+          '--mask-size': { duration: 0.3, ease: 'easeInOut' },
+          '--mask-position': { duration: 0.15, ease: 'linear' },
         }}
       >
         <div className="absolute inset-0 z-0 h-full w-full bg-black opacity-50 dark:bg-white" />
