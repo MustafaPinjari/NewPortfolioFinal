@@ -5,9 +5,11 @@ export default function Occupation() {
     <section className="mb-8 flex flex-col-reverse items-center justify-between sm:flex-row sm:items-center">
       <div className="text-center pt-2 md:pt-0 md:text-left">
         <h1 className="text-xl font-bold md:text-3xl lg:text-4xl">
-          Dale Larroder
+          Mustafa Pinjari
         </h1>
-        <h2 className="text-sm font-normal md:text-base">Software Developer</h2>
+        <h2 className="text-sm font-normal md:text-base">
+          Co-founder @ Techentrance
+        </h2>
       </div>
       <div>
         <Image

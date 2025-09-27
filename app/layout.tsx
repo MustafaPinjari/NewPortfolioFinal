@@ -9,11 +9,11 @@ import './tailwind.css';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Dale Larroder',
-    default: 'Dale Larroder',
+    template: '%s | Mustafa Pinjari',
+    default: 'Mustafa Pinjari',
   },
-  description: 'I build things for the web.',
-  metadataBase: new URL('https://dalelarroder.com'),
+  description: 'Co-founder @ Techentrance | Building for the web',
+  metadataBase: new URL('https://mustafapinjari.vercel.app'),
 };
 
 interface RootLayoutProps {
@@ -45,7 +45,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="theme-color" content="#000000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white">
+      <body
+        className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

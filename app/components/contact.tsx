@@ -5,9 +5,12 @@ export default function Contact() {
         <span className="text-3xl md:text-6xl xl:text-8xl">
           Let&apos;s make something <br></br> great together
         </span>
-        <span className="text-3xl md:text-6xl xl:text-8xl text-end">
-          hi@<span className="underline">dalelarroder.com</span>
-        </span>
+        <div className="text-3xl md:text-6xl xl:text-8xl text-end space-y-4">
+          <div>
+            <span className="underline">mustafapinjari344@gmail.com</span>
+          </div>
+          <div>+91 8799879228</div>
+        </div>
       </div>
     </section>
   );
