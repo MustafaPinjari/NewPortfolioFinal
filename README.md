@@ -1,10 +1,11 @@
-# dalelarroder.com ⚡️
+# mustafapinjari.vercel.app ⚡️
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Analytics**: [Logrocket](https://logrocket.com/)
 - **Content**: [MDX](https://mdxjs.com/)
+- **Owner**: Mustafa Pinjari
 
 ## Running Locally
 
@@ -13,13 +14,13 @@
 1. Clone this repo
 
 ```bash
-git clone git@github.com:dlarroder/dalelarroder.git
+git clone https://github.com/MustafaPinjari/portfolio.git
 ```
 
 2. Change directory
 
 ```sh
-cd dalelarroder
+cd portfolio
 ```
 
 3. Install dependencies
@@ -49,14 +50,14 @@ SPOTIFY_CLIENT_ID=<Your env>
 bun run dev
 ```
 
-## Previous Version
+## About This Portfolio
 
-This is the second version of my website.
+This is a customized version of a Next.js portfolio template, originally created by Dale Larroder.
 
-Prevoius v1 version:
+Original repository:
 
-- https://v1.dalelarroder.com/
+- https://github.com/dlarroder/dalelarroder
 
 ## Licence
 
-[MIT](https://github.com/dlarroder/dalelarroder/blob/master/LICENSE) © [Dale Larroder](https://www.dalelarroder.com)
+[MIT](https://github.com/dlarroder/dalelarroder/blob/master/LICENSE) © [Dale Larroder](https://www.dalelarroder.com), customized by [Mustafa Pinjari](https://mustafapinjari.vercel.app)

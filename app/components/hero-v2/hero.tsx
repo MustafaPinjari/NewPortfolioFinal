@@ -25,19 +25,18 @@ export default function Hero() {
             </h1>
             <section className="relative z-10">
               <p className="text-base text-justify">
-                I&apos;m Dale Larroder — a Software Engineer and forever a
-                student of the craft. I love building things for the web and am
-                always on the lookout for new challenges and opportunities to
-                learn. I&apos;m passionate about creating beautiful and
-                functional user experiences. Right now, I&apos;m building cool
-                things at{' '}
+                I&apos;m Mustafa Pinjari — a passionate technologist and
+                co-founder at Techentrance. I love building innovative solutions
+                and am always eager to tackle new challenges. My journey in tech
+                is driven by curiosity and a desire to create meaningful impact.
+                Currently, I&apos;m focused on building and growing{' '}
                 <a
-                  href="https://www.aphex.co/"
+                  href="https://techentrance.com"
                   className="underline-magical"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Aphex
+                  Techentrance
                 </a>
                 .
               </p>
@@ -47,7 +46,7 @@ export default function Hero() {
                 <p>More about me: </p>
                 <div className="flex -ml-2">
                   <Link
-                    href="https://www.linkedin.com/in/dale-larroder/"
+                    href="https://www.linkedin.com/in/mustafapinjari/"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="linkedin"
@@ -55,7 +54,7 @@ export default function Hero() {
                     <LinkedinIcon className="h-9 w-9" />
                   </Link>
                   <Link
-                    href="https://github.com/dlarroder"
+                    href="https://github.com/MustafaPinjari"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="github"
@@ -63,7 +62,7 @@ export default function Hero() {
                     <GithubIcon className="h-9 w-9" />
                   </Link>
                   <Link
-                    href="https://x.com/dalelarroder"
+                    href="https://x.com/PINJARIMUSTAFA_"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="twitter"
@@ -71,7 +70,7 @@ export default function Hero() {
                     <XIcon className="h-9 w-9" />
                   </Link>
                   <Link
-                    href="mailto:hi@dalelarroder.com"
+                    href="mailto:mustafapinjari344@gmail.com"
                     aria-label="email"
                     rel="noreferrer"
                   >
