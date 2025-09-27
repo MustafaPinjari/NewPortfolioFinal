@@ -8,6 +8,11 @@ export default async function WakaStats() {
   const allTimeStats = await getAllTimeStats();
   const thisWeekStats = await getStatsThisWeek();
 
+  // If no WakaTime data is available, don't render the component
+  if (!allTimeStats || !thisWeekStats) {
+    return null;
+  }
+
   const { hours, minutes } = extractHoursAndMinutes(allTimeStats.text);
 
   return (
