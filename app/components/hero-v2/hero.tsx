@@ -10,10 +10,13 @@ import ArrowDown from './arrow-down';
 
 export default function Hero() {
   return (
-    <main className="relative min-h-svh w-screen overflow-hidden">
+    <main className="relative min-h-[100dvh] w-full overflow-x-hidden">
       <BackgroundGradientAnimation>
         <div
-          className={classNames('relative min-h-svh', merryWeather.className)}
+          className={classNames(
+            'relative min-h-[calc(100dvh-1px)]',
+            merryWeather.className,
+          )}
         >
           <ArrowDown />
           <div className="absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 text-shadow-lg lg:ml-14">
