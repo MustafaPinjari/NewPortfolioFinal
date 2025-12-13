@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import ThemeSwitch from './components/layouts/theme-switch/theme-switch';
 import { mukta } from './fonts';
 import './tailwind.css';
+import LogRocketProvider from './components/logrocket-provider';
 
 export const metadata: Metadata = {
   title: {
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white"
         suppressHydrationWarning
       >
+        <LogRocketProvider />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

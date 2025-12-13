@@ -49,15 +49,3 @@ SPOTIFY_CLIENT_ID=<Your env>
 ```bash
 bun run dev
 ```
-
-## About This Portfolio
-
-This is a customized version of a Next.js portfolio template, originally created by Dale Larroder.
-
-Original repository:
-
-- https://github.com/dlarroder/dalelarroder
-
-## Licence
-
-[MIT](https://github.com/dlarroder/dalelarroder/blob/master/LICENSE) © [Dale Larroder](https://www.dalelarroder.com), customized by [Mustafa Pinjari](https://mustafapinjari.vercel.app)

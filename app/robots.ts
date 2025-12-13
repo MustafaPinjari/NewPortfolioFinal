@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: `https://dalelarroder.com/sitemap.xml`,
-    host: `https://dalelarroder.com`,
+    host: `https://mustafPinjari.live`,
   };
 }

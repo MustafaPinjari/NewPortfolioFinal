@@ -133,7 +133,7 @@ export const BackgroundGradientAnimation = ({
   return (
     <div
       className={classNames(
-        'fixed top-0 left-0 w-full h-full overflow-hidden -z-10',
+        'fixed top-0 left-0 w-full h-full overflow-hidden',
         className,
       )}
     >
@@ -155,8 +155,14 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-      <div className={classNames('relative h-full w-full', containerClassName)}>
-        <div className="absolute inset-0">
+      <div
+        ref={interactiveRef}
+        className={classNames(
+          'gradients-container h-full w-full overflow-hidden pointer-events-none',
+          containerClassName,
+        )}
+      >
+        <div className="gradients">
           <div
             className={classNames(
               'absolute inset-0',

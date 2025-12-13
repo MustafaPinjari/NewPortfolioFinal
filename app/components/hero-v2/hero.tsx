@@ -11,7 +11,7 @@ import ArrowDown from './arrow-down';
 export default function Hero() {
   return (
     <main className="relative min-h-[100dvh] w-full overflow-x-hidden">
-      <BackgroundGradientAnimation>
+      <BackgroundGradientAnimation className="pointer-events-none z-0">
         <div
           className={classNames(
             'relative min-h-[calc(100dvh-1px)]',
@@ -19,7 +19,7 @@ export default function Hero() {
           )}
         >
           <ArrowDown />
-          <div className="absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 text-shadow-lg lg:ml-14">
+          <div className="absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 text-shadow-lg lg:ml-14 z-20 pointer-events-auto">
             <h1 className="font-serif text-2xl font-medium md:mr-4 md:text-4xl">
               Welcome to my{' '}
               <span className="font-bold">personal portfolio — </span> or, as I
@@ -82,11 +82,31 @@ export default function Hero() {
                 </div>
               </div>
               <div className="h-14 border-l border-gray-300" />
-              <div className="flex flex-wrap space-x-3 space-y-1">
-                <Link href="/projects">/projects</Link>
-                <Link href="/thoughts">/thoughts</Link>
-                <Link href="/uses">/uses</Link>
-                <Link href="/stats">/stats</Link>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/projects"
+                  className="hover:underline hover:text-white transition-colors"
+                >
+                  /projects
+                </Link>
+                <Link
+                  href="/thoughts"
+                  className="hover:underline hover:text-white transition-colors"
+                >
+                  /thoughts
+                </Link>
+                <Link
+                  href="/uses"
+                  className="hover:underline hover:text-white transition-colors"
+                >
+                  /uses
+                </Link>
+                <Link
+                  href="/stats"
+                  className="hover:underline hover:text-white transition-colors"
+                >
+                  /stats
+                </Link>
               </div>
             </section>
           </div>
