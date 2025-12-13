@@ -7,7 +7,7 @@
     "build": "next build",
     "serve": "next start",
     "lint": "next lint --dir app",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@octokit/graphql": "^8.2.1",
