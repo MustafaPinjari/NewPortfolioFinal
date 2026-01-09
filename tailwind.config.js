@@ -102,6 +102,57 @@ module.exports = {
         yellow: colors.amber,
         purple: colors.violet,
       },
+      animation: {
+        marquee: 'marquee var(--duration, 20s) linear infinite',
+        'marquee-reverse':
+          'marquee-reverse var(--duration, 20s) linear infinite',
+        'marquee-vertical':
+          'marquee-vertical var(--duration, 20s) linear infinite',
+        'marquee-vertical-reverse':
+          'marquee-vertical-reverse var(--duration, 20s) linear infinite',
+        'float-in-out': 'float-in-out 8s ease-in-out infinite',
+        marquee: 'marquee var(--duration, 40s) linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        'marquee-vertical': {
+          '0%': { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
+        'marquee-vertical-reverse': {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(0%)' },
+        },
+        'float-in-out': {
+          '0%, 100%': {
+            transform: 'translateZ(0px) scale(1)',
+            opacity: '0.8',
+          },
+          '25%': {
+            transform: 'translateZ(20px) scale(1.02)',
+            opacity: '1',
+          },
+          '50%': {
+            transform: 'translateZ(40px) scale(1.05)',
+            opacity: '1',
+          },
+          '75%': {
+            transform: 'translateZ(20px) scale(1.02)',
+            opacity: '1',
+          },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
