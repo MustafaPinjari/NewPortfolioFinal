@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { Suspense } from 'react';
-import NowPlaying from '../spotify/now-playing';
 import { GithubIcon } from './icons/github-icon';
 import { InstagramIcon } from './icons/instagram-icon';
 import { LinkedinIcon } from './icons/linkedin-icon';
@@ -12,21 +10,18 @@ export default function Footer() {
     <SectionContainer>
       <footer>
         <div className="mb-0 flex flex-col justify-start space-y-1.5 space-x-0 py-10 text-gray-500 dark:text-gray-400">
-          <Suspense fallback={<div className="h-6" />}>
-            <NowPlaying />
-          </Suspense>
           <div className="flex flex-col items-center space-y-2 text-sm sm:flex-row sm:justify-between sm:text-base">
             <ul className="flex space-x-2">
               <li>{`© ${new Date().getFullYear()}`}</li>
               <li>{` • `}</li>
               <li>
-                <Link href="/">Dale Larroder</Link>
+                <Link href="/">Mustafa Pinjari</Link>
               </li>
             </ul>
             <ul className="flex cursor-pointer items-center">
               <li>
                 <Link
-                  href="https://www.linkedin.com/in/dale-larroder/"
+                  href="https://www.linkedin.com/in/mustafa-pinjari/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="linkedin"
@@ -36,7 +31,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://github.com/dlarroder"
+                  href="https://github.com/MustafaPinjari"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="github"
@@ -46,7 +41,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://x.com/dalelarroder"
+                  href="https://x.com/mustafapinjari"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="twitter"
@@ -56,7 +51,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://www.instagram.com/dalelarroder/"
+                  href="https://www.instagram.com/mustafapinjari/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="instagram"

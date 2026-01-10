@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 interface InteractiveGridPatternProps {
   className?: string;
@@ -23,7 +23,7 @@ export function InteractiveGridPattern({
     Array<{ id: number; x: number; y: number; opacity: number }>
   >([]);
 
-  const generateSquares = () => {
+  const generateSquares = useCallback(() => {
     const newSquares = [];
     for (let i = 0; i < numSquares; i++) {
       newSquares.push({
@@ -34,7 +34,7 @@ export function InteractiveGridPattern({
       });
     }
     return newSquares;
-  };
+  }, [numSquares, gridSize, maxOpacity]);
 
   useEffect(() => {
     // Initial squares
