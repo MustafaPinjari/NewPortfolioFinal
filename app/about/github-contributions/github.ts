@@ -1,10 +1,11 @@
 import { graphql } from '@octokit/graphql';
 import { cache } from 'react';
 
-export const GITHUB_USERNAME = 'dlarroder';
+export const GITHUB_USERNAME = 'MustafaPinjari';
 
 const getGraphqlWithAuth = cache(() => {
-  const github_token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || '';
+  const github_token =
+    process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN || '';
 
   if (!github_token) {
     throw new Error('GITHUB_TOKEN is required');

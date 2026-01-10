@@ -146,9 +146,9 @@ const DATA = {
 
 export function DockDemo() {
   return (
-    <div className="fixed bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="fixed bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-50 max-w-[95vw] overflow-x-auto">
       <TooltipProvider>
-        <Dock direction="middle" className="px-2 sm:px-3">
+        <Dock direction="middle" className="px-1 sm:px-2 lg:px-3 min-w-fit">
           {DATA.navbar.map((item) => (
             <DockIcon key={item.label}>
               <Tooltip>
@@ -158,10 +158,10 @@ export function DockDemo() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: 'ghost', size: 'icon' }),
-                      'size-12 sm:size-14 lg:size-16 rounded-full',
+                      'size-10 sm:size-12 lg:size-14 xl:size-16 rounded-full',
                     )}
                   >
-                    <item.icon className="size-4 sm:size-5 lg:size-6" />
+                    <item.icon className="size-3 sm:size-4 lg:size-5 xl:size-6" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -170,7 +170,7 @@ export function DockDemo() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full" />
+          <Separator orientation="vertical" className="h-full mx-1" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>
@@ -182,10 +182,10 @@ export function DockDemo() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: 'ghost', size: 'icon' }),
-                      'size-12 sm:size-14 lg:size-16 rounded-full',
+                      'size-10 sm:size-12 lg:size-14 xl:size-16 rounded-full',
                     )}
                   >
-                    <social.icon className="size-4 sm:size-5 lg:size-6" />
+                    <social.icon className="size-3 sm:size-4 lg:size-5 xl:size-6" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>

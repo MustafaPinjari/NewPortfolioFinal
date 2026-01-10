@@ -13,7 +13,7 @@ export default function Occupation() {
       </div>
       <div>
         <Image
-          alt="Dale Larroder"
+          alt="Mustafa Pinjari"
           height={130}
           width={130}
           src="/static/images/avatar.webp"
