@@ -6,6 +6,7 @@ import { ScrollProvider } from './components/providers/ScrollProvider';
 import Works from './components/work/works';
 import Testimonials from './components/testimonials';
 import Skills from './components/skills';
+import { DockDemo } from './components/dock';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Works />
       <Testimonials />
       <Contact />
+      <DockDemo />
     </ScrollProvider>
   );
 }
