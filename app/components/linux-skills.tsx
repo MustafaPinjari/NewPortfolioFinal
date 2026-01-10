@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import { LinuxTerminalDemo } from './ui/linux-terminal-demo';
-import { LinuxBentoGrid } from './ui/simple-bento-grid';
+import { LinuxBentoGrid } from './linux-bento-grid';
 
 export default function LinuxSkills() {
   const skills = [
@@ -126,7 +126,7 @@ export default function LinuxSkills() {
           </motion.div>
         </div>
 
-        {/* Bento Grid Section */}
+        {/* Enhanced Bento Grid Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

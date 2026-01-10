@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx'],
   transpilePackages: ['next-mdx-remote'],
+  experimental: {
+    optimizePackageImports: ['next/font/google'],
+  },
   async rewrites() {
     return [
       {

@@ -1,7 +1,7 @@
 import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-module.exports = {
+export default {
   mode: 'jit',
   content: [
     './app/**/*.tsx',

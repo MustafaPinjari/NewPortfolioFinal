@@ -1,8 +1,6 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 
 // Simple SVG Icons
 const FileTextIcon = ({ className }: { className?: string }) => (
@@ -69,146 +67,7 @@ const TerminalIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Simple Marquee Component
-function SimpleMarquee({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn('flex overflow-hidden', className)}>
-      <div className="flex animate-marquee whitespace-nowrap">{children}</div>
-      <div
-        className="flex animate-marquee whitespace-nowrap"
-        aria-hidden="true"
-      >
-        {children}
-      </div>
-    </div>
-  );
-}
-
-// Simple Animated List
-function SimpleAnimatedList({ className }: { className?: string }) {
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      title: 'System Update',
-      desc: 'Ubuntu 22.04.3 available',
-      time: '2m ago',
-      icon: '🔄',
-    },
-    {
-      id: 2,
-      title: 'Docker Started',
-      desc: 'gestureflow_web container',
-      time: '5m ago',
-      icon: '🐳',
-    },
-    {
-      id: 3,
-      title: 'Git Push',
-      desc: 'Pushed to origin/main',
-      time: '8m ago',
-      icon: '📤',
-    },
-  ]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNotifications((prev) => {
-        const newNotifications = [...prev];
-        newNotifications.unshift({
-          id: Date.now(),
-          title: 'Build Complete',
-          desc: 'npm run build finished',
-          time: 'Just now',
-          icon: '✅',
-        });
-        return newNotifications.slice(0, 4);
-      });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className={cn('space-y-2 p-4', className)}>
-      {notifications.map((notif, index) => (
-        <motion.div
-          key={notif.id}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.1 }}
-          className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
-        >
-          <span className="text-lg">{notif.icon}</span>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
-              {notif.title}
-            </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {notif.desc}
-            </p>
-          </div>
-          <span className="text-xs text-gray-400">{notif.time}</span>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
-// Simple Integration Demo
-function SimpleIntegrationDemo({ className }: { className?: string }) {
-  const tools = [
-    { name: 'Docker', icon: '🐳', color: 'bg-blue-500' },
-    { name: 'Git', icon: '📦', color: 'bg-red-500' },
-    { name: 'Node.js', icon: '🟢', color: 'bg-green-500' },
-    { name: 'Python', icon: '🐍', color: 'bg-yellow-500' },
-  ];
-
-  return (
-    <div className={cn('flex items-center justify-center p-8', className)}>
-      <div className="relative">
-        {/* Central Ubuntu Logo */}
-        <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-2xl font-bold z-10 relative">
-          🐧
-        </div>
-
-        {/* Surrounding Tools */}
-        {tools.map((tool, index) => {
-          const angle = index * 90 * (Math.PI / 180);
-          const radius = 60;
-          const x = Math.cos(angle) * radius;
-          const y = Math.sin(angle) * radius;
-
-          return (
-            <motion.div
-              key={tool.name}
-              className={cn(
-                'absolute w-12 h-12 rounded-full flex items-center justify-center text-white',
-                tool.color,
-              )}
-              style={{
-                left: `calc(50% + ${x}px - 24px)`,
-                top: `calc(50% + ${y}px - 24px)`,
-              }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-            >
-              <span className="text-lg">{tool.icon}</span>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// Bento Card Component
+// Simple Bento Card Component
 function BentoCard({
   name,
   description,
@@ -227,94 +86,148 @@ function BentoCard({
   return (
     <div
       className={cn(
-        'group relative overflow-hidden rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-6',
-        'hover:shadow-lg transition-all duration-300',
+        'group relative overflow-hidden rounded-xl bg-gray-900/50 border border-gray-800 p-4',
+        'hover:shadow-lg hover:border-gray-700 transition-all duration-300',
+        'backdrop-blur-sm',
         className,
       )}
     >
-      <div className="relative z-10">
-        <Icon className="h-8 w-8 text-gray-700 dark:text-gray-300 mb-4" />
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          {name}
-        </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          {description}
-        </p>
-        <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+      <div className="relative z-10 h-full flex flex-col">
+        <div className="flex items-center mb-3">
+          <Icon className="h-5 w-5 text-blue-400 mr-2" />
+          <h3 className="text-sm font-semibold text-white">{name}</h3>
+        </div>
+        <div className="flex-1 mb-3">
+          <p className="text-xs text-gray-300 leading-relaxed line-clamp-4">
+            {description}
+          </p>
+        </div>
+        <button className="text-xs text-blue-400 hover:text-blue-300 transition-colors self-start">
           {cta} →
         </button>
       </div>
-      <div className="absolute inset-0 opacity-50">{background}</div>
+      <div className="absolute inset-0 opacity-60">{background}</div>
     </div>
   );
 }
 
 // Main Bento Grid
 export function LinuxBentoGrid() {
-  const linuxFiles = [
-    { name: 'gestureflow.py', desc: 'Hand gesture recognition with OpenCV' },
-    { name: 'requirements.txt', desc: 'Python dependencies for the project' },
-    { name: 'docker-compose.yml', desc: 'Container orchestration setup' },
-    { name: 'nginx.conf', desc: 'Web server configuration' },
-    { name: 'deploy.sh', desc: 'Automated deployment script' },
-  ];
-
   const features = [
     {
-      Icon: FileTextIcon,
-      name: 'Project Files',
+      Icon: TerminalIcon,
+      name: 'Development Environment',
       description:
-        'Organized development files with proper Linux permissions and structure.',
-      cta: 'View Files',
+        'Python, Django, JavaScript, Node.js setup using apt, pip, nvm. Virtual environments, environment variables, and dependency isolation. Git, SSH keys, GitHub workflows entirely from terminal.',
+      cta: 'View Setup',
+      className: 'col-span-2 row-span-2',
+      background: (
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs text-green-400 w-full h-full overflow-hidden">
+            <div className="mb-2 text-blue-400">mustafa@ubuntu:~/projects</div>
+            <div className="space-y-1">
+              <div>
+                <span className="text-gray-500">{'>'}</span> neofetch
+              </div>
+              <div className="text-yellow-400">
+                OS: Ubuntu 22.04.3 LTS x86_64
+              </div>
+              <div className="text-yellow-400">Host: Developer Workstation</div>
+              <div className="text-yellow-400">Kernel: 6.2.0-39-generic</div>
+              <div className="text-yellow-400">Shell: zsh 5.8.1</div>
+              <div className="text-yellow-400">Terminal: gnome-terminal</div>
+              <div>
+                <span className="text-gray-500">{'>'}</span>
+              </div>
+              <div>
+                <span className="text-gray-500">{'>'}</span> # Virtual
+                environment activated
+              </div>
+              <div>
+                <span className="text-gray-500">{'>'}</span> Installing
+                opencv-python
+              </div>
+              <div>
+                <span className="text-gray-500">{'>'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      Icon: Share2Icon,
+      name: 'System & Terminal Customization',
+      description:
+        'Custom shell (Zsh/Bash) with aliases, functions, and productivity scripts. Power-user terminal workflow for faster development. Linux file permissions, process management, and networking basics.',
+      cta: 'Explore Config',
       className: 'col-span-1 row-span-1',
       background: (
-        <SimpleMarquee className="absolute top-10 left-0 right-0">
-          <div className="flex space-x-4">
-            {linuxFiles.map((file, idx) => (
-              <div
-                key={idx}
-                className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 min-w-[200px]"
-              >
-                <div className="font-medium text-sm">{file.name}</div>
-                <div className="text-xs text-gray-500">{file.desc}</div>
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <div className="bg-gray-900 rounded-lg p-3 font-mono text-xs text-green-400 w-full">
+            <div className="text-blue-400 mb-1">
+              Custom shell (Zsh/Bash) with aliases, functions, and productivity
+              scripts
+            </div>
+            <div className="space-y-1 text-[10px]">
+              <div>• Power-user terminal workflow for faster development</div>
+              <div>
+                • Linux file permissions, process management, and networking
+                basics
               </div>
-            ))}
+            </div>
           </div>
-        </SimpleMarquee>
+        </div>
+      ),
+    },
+    {
+      Icon: FileTextIcon,
+      name: 'DevOps & Automation',
+      description:
+        'Docker and container-based development on Ubuntu. Nginx setup for local servers and reverse proxy testing. CI/CD experimentation using GitHub Actions on Linux runners.',
+      cta: 'View Tools',
+      className: 'col-span-1 row-span-1',
+      background: (
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <div className="bg-gray-900 rounded-lg p-3 font-mono text-xs text-green-400 w-full">
+            <div className="text-blue-400 mb-1">DevOps & Automation</div>
+            <div className="space-y-1 text-[10px]">
+              <div>• Docker and container-based development on Ubuntu</div>
+              <div>
+                • Nginx setup for local servers and reverse proxy testing
+              </div>
+              <div>
+                • CI/CD experimentation using GitHub Actions on Linux runners
+              </div>
+            </div>
+          </div>
+        </div>
       ),
     },
     {
       Icon: BellIcon,
-      name: 'System Notifications',
+      name: 'Performance & Stability',
       description:
-        'Real-time Ubuntu system notifications and development updates.',
-      cta: 'View Activity',
-      className: 'col-span-2 row-span-1',
-      background: <SimpleAnimatedList className="absolute inset-0" />,
-    },
-    {
-      Icon: Share2Icon,
-      name: 'Development Stack',
-      description:
-        'Integrated Ubuntu development environment with Docker, Git, and more.',
-      cta: 'Explore Tools',
-      className: 'col-span-2 row-span-1',
-      background: <SimpleIntegrationDemo className="absolute inset-0" />,
-    },
-    {
-      Icon: TerminalIcon,
-      name: 'Terminal Workflow',
-      description:
-        'Daily command-line operations and automation scripts on Ubuntu.',
-      cta: 'View Commands',
-      className: 'col-span-1 row-span-1',
+        'Preference for Ubuntu due to its reliability, security, and performance. Efficient use of system resources for long development sessions. Comfortable debugging OS-level and application-level issues.',
+      cta: 'View Metrics',
+      className: 'col-span-3 row-span-1',
       background: (
         <div className="absolute inset-0 flex items-center justify-center p-4">
-          <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs text-green-400 w-full">
-            <div>$ sudo apt update</div>
-            <div>$ docker-compose up -d</div>
-            <div>$ python manage.py runserver</div>
-            <div className="text-gray-500"># Ubuntu ready 🚀</div>
+          <div className="bg-gray-900 rounded-lg p-3 font-mono text-xs text-green-400 w-full">
+            <div className="text-blue-400 mb-1">Performance & Stability</div>
+            <div className="grid grid-cols-3 gap-4 text-[10px]">
+              <div>
+                • Preference for Ubuntu due to its reliability, security, and
+                performance
+              </div>
+              <div>
+                • Efficient use of system resources for long development
+                sessions
+              </div>
+              <div>
+                • Comfortable debugging OS-level and application-level issues
+              </div>
+            </div>
           </div>
         </div>
       ),
@@ -322,10 +235,24 @@ export function LinuxBentoGrid() {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-6 auto-rows-[300px]">
-      {features.map((feature, idx) => (
-        <BentoCard key={idx} {...feature} />
-      ))}
+    <div className="grid grid-cols-3 gap-4 auto-rows-[200px]">
+      {/* Row 1: Terminal (2x2) + System Customization (1x1) */}
+      <div className="col-span-2 row-span-2">
+        <BentoCard {...features[0]} />
+      </div>
+      <div className="col-span-1 row-span-1">
+        <BentoCard {...features[1]} />
+      </div>
+
+      {/* Row 2: DevOps (1x1) - positioned in second row, third column */}
+      <div className="col-span-1 row-span-1">
+        <BentoCard {...features[2]} />
+      </div>
+
+      {/* Row 3: Performance & Stability (3x1) - spans full width below */}
+      <div className="col-span-3 row-span-1">
+        <BentoCard {...features[3]} />
+      </div>
     </div>
   );
 }

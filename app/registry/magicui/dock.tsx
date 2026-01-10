@@ -43,11 +43,14 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
-        return React.cloneElement(child as React.ReactElement, {
-          mouseX: mouseX,
-          magnification: magnification,
-          distance: distance,
-        });
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            mouseX: mouseX,
+            magnification: magnification,
+            distance: distance,
+          });
+        }
+        return child;
       });
     };
 
