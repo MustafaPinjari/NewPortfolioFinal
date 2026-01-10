@@ -1,6 +1,6 @@
 'use client';
 
-import { useLenis } from 'lenis/dist/lenis-react';
+import { useLenis } from 'lenis/react';
 import { createContext, ReactNode, useState } from 'react';
 
 interface ScrollValue {
