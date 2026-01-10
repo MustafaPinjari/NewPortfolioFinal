@@ -3,7 +3,6 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: [
       'motion/react',
       'lucide-react',
@@ -21,20 +20,6 @@ const nextConfig: NextConfig = {
 
   // Compression
   compress: true,
-
-  // Bundle analyzer (only in development)
-  ...(process.env.ANALYZE === 'true' && {
-    webpack: async (config: { plugins: { push: (arg0: unknown) => void } }) => {
-      const { BundleAnalyzerPlugin } = await import('webpack-bundle-analyzer');
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          openAnalyzer: false,
-        }),
-      );
-      return config;
-    },
-  }),
 
   // Performance headers
   async headers() {
@@ -101,12 +86,6 @@ const nextConfig: NextConfig = {
 
   // Disable source maps in production for better performance
   productionBrowserSourceMaps: false,
-
-  // Optimize fonts
-  optimizeFonts: true,
-
-  // Enable SWC minification
-  swcMinify: true,
 
   // Compiler options
   compiler: {
