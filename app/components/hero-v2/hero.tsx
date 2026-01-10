@@ -7,6 +7,8 @@ import { AtSignIcon } from '../layouts/icons/at-sign-icon';
 import { GithubIcon } from '../layouts/icons/github-icon';
 import { LinkedinIcon } from '../layouts/icons/linkedin-icon';
 import { XIcon } from '../layouts/icons/x-icon';
+import { MorphingText } from '../ui/morphing-text';
+import { Highlighter } from '../../registry/magicui/highlighter';
 
 export default function Hero() {
   return (
@@ -43,7 +45,15 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              I build things for the web.
+              <MorphingText
+                texts={[
+                  'I build things for the web.',
+                  'I create digital experiences.',
+                  'I solve complex problems.',
+                  'I turn ideas into reality.',
+                ]}
+                duration={2500}
+              />
             </motion.h2>
           </motion.div>
 
@@ -54,18 +64,26 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            I&apos;m Mustafa Pinjari — a passionate technologist and co-founder
-            at{' '}
-            <a
-              href="https://techentrance.com"
-              className="text-blue-600 dark:text-blue-400 hover:underline transition-colors font-medium"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Techentrance
-            </a>
-            . I love building innovative solutions and creating meaningful
-            digital experiences.
+            I&apos;m{' '}
+            <Highlighter action="underline" color="#3B82F6">
+              Mustafa Pinjari
+            </Highlighter>{' '}
+            — a passionate technologist and co-founder at{' '}
+            <Highlighter action="highlight" color="rgba(59, 130, 246, 0.15)">
+              <a
+                href="https://techentrance.com"
+                className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Techentrance
+              </a>
+            </Highlighter>
+            . I love building{' '}
+            <Highlighter action="highlight" color="rgba(34, 197, 94, 0.15)">
+              innovative solutions
+            </Highlighter>{' '}
+            and creating meaningful digital experiences.
           </motion.p>
 
           {/* CTA Buttons */}

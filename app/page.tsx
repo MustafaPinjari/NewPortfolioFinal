@@ -5,6 +5,7 @@ import LinuxSkills from './components/linux-skills';
 import { ScrollProvider } from './components/providers/ScrollProvider';
 import Works from './components/work/works';
 import Testimonials from './components/testimonials';
+import Skills from './components/skills';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Intro />
       <LinuxSkills />
+      <Skills />
       <Works />
       <Testimonials />
       <Contact />
