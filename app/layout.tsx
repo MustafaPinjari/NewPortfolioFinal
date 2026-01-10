@@ -7,6 +7,7 @@ import ThemeSwitch from './components/layouts/theme-switch/theme-switch';
 import { mukta } from './fonts';
 import './tailwind.css';
 import LogRocketProvider from './components/logrocket-provider';
+import { PerformanceMonitor } from './components/ui/performance-monitor';
 
 export const metadata: Metadata = {
   title: {
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <LenisProvider>
             <ThemeSwitch />
             {children}
+            <PerformanceMonitor />
           </LenisProvider>
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>

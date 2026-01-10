@@ -1,24 +1,116 @@
-const umami_url = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_URL ?? '';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  pageExtensions: ['ts', 'tsx'],
-  transpilePackages: ['next-mdx-remote'],
+const nextConfig: NextConfig = {
+  // Performance optimizations
   experimental: {
-    optimizePackageImports: ['next/font/google'],
+    optimizeCss: true,
+    optimizePackageImports: [
+      'motion/react',
+      'lucide-react',
+      '@radix-ui/react-icons',
+    ],
   },
-  async rewrites() {
+
+  // Image optimization
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+  },
+
+  // Compression
+  compress: true,
+
+  // Bundle analyzer (only in development)
+  ...(process.env.ANALYZE === 'true' && {
+    webpack: async (config: { plugins: { push: (arg0: unknown) => void } }) => {
+      const { BundleAnalyzerPlugin } = await import('webpack-bundle-analyzer');
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+        }),
+      );
+      return config;
+    },
+  }),
+
+  // Performance headers
+  async headers() {
     return [
       {
-        source: '/umami.js',
-        destination: `${umami_url}/script.js`,
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
       },
       {
-        source: '/api/send',
-        destination: `${umami_url}/api/send`,
+        source: '/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
     ];
+  },
+
+  // Redirects for performance
+  async redirects() {
+    return [];
+  },
+
+  // Rewrites for optimization
+  async rewrites() {
+    return [];
+  },
+
+  // Output configuration
+  output: 'standalone',
+
+  // Disable x-powered-by header
+  poweredByHeader: false,
+
+  // Enable React strict mode
+  reactStrictMode: true,
+
+  // Disable source maps in production for better performance
+  productionBrowserSourceMaps: false,
+
+  // Optimize fonts
+  optimizeFonts: true,
+
+  // Enable SWC minification
+  swcMinify: true,
+
+  // Compiler options
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 };
 

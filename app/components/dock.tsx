@@ -146,9 +146,9 @@ const DATA = {
 
 export function DockDemo() {
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="fixed bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-50">
       <TooltipProvider>
-        <Dock direction="middle">
+        <Dock direction="middle" className="px-2 sm:px-3">
           {DATA.navbar.map((item) => (
             <DockIcon key={item.label}>
               <Tooltip>
@@ -158,10 +158,10 @@ export function DockDemo() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: 'ghost', size: 'icon' }),
-                      'size-16 rounded-full',
+                      'size-12 sm:size-14 lg:size-16 rounded-full',
                     )}
                   >
-                    <item.icon className="size-6" />
+                    <item.icon className="size-4 sm:size-5 lg:size-6" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -182,10 +182,10 @@ export function DockDemo() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: 'ghost', size: 'icon' }),
-                      'size-16 rounded-full',
+                      'size-12 sm:size-14 lg:size-16 rounded-full',
                     )}
                   >
-                    <social.icon className="size-6" />
+                    <social.icon className="size-4 sm:size-5 lg:size-6" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>

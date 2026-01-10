@@ -1,6 +1,7 @@
 'use client';
 
 import { OrbitingCircles } from '@/app/registry/magicui/orbiting-circles';
+import { ResponsiveContainer } from './ui/responsive-container';
 
 const Icons = {
   javascript: () => (
@@ -250,58 +251,123 @@ const Icons = {
 
 export default function Skills() {
   return (
-    <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden py-20">
+    <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden py-12 sm:py-16 lg:py-20">
       {/* Background grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:3rem_3rem] lg:bg-[size:4rem_4rem] opacity-20"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Skills & Technologies
-          </h2>
-          <p className="text-lg text-gray-400">
-            Technologies I work with to bring ideas to life
-          </p>
+      <ResponsiveContainer
+        className="relative z-10"
+        maxWidth="2xl"
+        padding="xl"
+      >
+        <div className="flex flex-col items-center justify-center">
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white">
+              Skills & Technologies
+            </h2>
+            <p className="text-base sm:text-lg text-gray-400">
+              Technologies I work with to bring ideas to life
+            </p>
+          </div>
+
+          {/* Orbiting Circles Container - Responsive sizing */}
+          <div className="relative flex items-center justify-center w-full max-w-[300px] h-[300px] sm:max-w-[400px] sm:h-[400px] md:max-w-[500px] md:h-[500px] lg:max-w-[600px] lg:h-[600px]">
+            {/* Inner orbit - Core Languages */}
+            <OrbitingCircles
+              iconSize={40}
+              radius={80}
+              duration={20}
+              showOrbit={true}
+              className="sm:hidden" // Mobile version
+            >
+              <Icons.javascript />
+              <Icons.typescript />
+              <Icons.python />
+              <Icons.java />
+            </OrbitingCircles>
+
+            <OrbitingCircles
+              iconSize={50}
+              radius={100}
+              duration={20}
+              showOrbit={true}
+              className="hidden sm:block lg:hidden" // Tablet version
+            >
+              <Icons.javascript />
+              <Icons.typescript />
+              <Icons.python />
+              <Icons.java />
+            </OrbitingCircles>
+
+            <OrbitingCircles
+              iconSize={60}
+              radius={120}
+              duration={20}
+              showOrbit={true}
+              className="hidden lg:block" // Desktop version
+            >
+              <Icons.javascript />
+              <Icons.typescript />
+              <Icons.python />
+              <Icons.java />
+            </OrbitingCircles>
+
+            {/* Outer orbit - Frameworks & Tools */}
+            <OrbitingCircles
+              iconSize={35}
+              radius={140}
+              duration={30}
+              reverse
+              showOrbit={true}
+              className="sm:hidden" // Mobile version
+            >
+              <Icons.react />
+              <Icons.nextjs />
+              <Icons.nodejs />
+              <Icons.django />
+              <Icons.tailwind />
+              <Icons.figma />
+            </OrbitingCircles>
+
+            <OrbitingCircles
+              iconSize={40}
+              radius={170}
+              duration={30}
+              reverse
+              showOrbit={true}
+              className="hidden sm:block lg:hidden" // Tablet version
+            >
+              <Icons.react />
+              <Icons.nextjs />
+              <Icons.nodejs />
+              <Icons.django />
+              <Icons.tensorflow />
+              <Icons.tailwind />
+              <Icons.figma />
+              <Icons.mongodb />
+            </OrbitingCircles>
+
+            <OrbitingCircles
+              iconSize={50}
+              radius={200}
+              duration={30}
+              reverse
+              showOrbit={true}
+              className="hidden lg:block" // Desktop version
+            >
+              <Icons.react />
+              <Icons.nextjs />
+              <Icons.nodejs />
+              <Icons.django />
+              <Icons.tensorflow />
+              <Icons.tailwind />
+              <Icons.figma />
+              <Icons.mongodb />
+            </OrbitingCircles>
+          </div>
         </div>
-
-        {/* Orbiting Circles Container - properly centered */}
-        <div
-          className="relative flex items-center justify-center"
-          style={{ width: '600px', height: '600px' }}
-        >
-          {/* Inner orbit - Core Languages */}
-          <OrbitingCircles
-            iconSize={60}
-            radius={120}
-            duration={20}
-            showOrbit={true}
-          >
-            <Icons.javascript />
-            <Icons.typescript />
-            <Icons.python />
-            <Icons.java />
-          </OrbitingCircles>
-
-          {/* Outer orbit - Frameworks & Tools */}
-          <OrbitingCircles
-            iconSize={50}
-            radius={200}
-            duration={30}
-            reverse
-            showOrbit={true}
-          >
-            <Icons.react />
-            <Icons.nextjs />
-            <Icons.nodejs />
-            <Icons.django />
-            <Icons.tensorflow />
-            <Icons.tailwind />
-            <Icons.figma />
-            <Icons.mongodb />
-          </OrbitingCircles>
-        </div>
-      </div>
+      </ResponsiveContainer>
     </section>
   );
 }

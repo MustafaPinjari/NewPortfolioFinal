@@ -44,14 +44,22 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(
-            child as React.ReactElement<DockIconProps>,
-            {
-              mouseX: mouseX,
-              magnification: magnification,
-              distance: distance,
-            },
-          );
+          // Check if the child is a DockIcon component
+          if (
+            child.type === DockIcon ||
+            (child.type as React.ComponentType)?.displayName === 'DockIcon'
+          ) {
+            return React.cloneElement(
+              child as React.ReactElement<DockIconProps>,
+              {
+                mouseX: mouseX,
+                magnification: magnification,
+                distance: distance,
+              },
+            );
+          }
+          // For other components, don't pass the dock-specific props
+          return child;
         }
         return child;
       });
@@ -83,6 +91,9 @@ export interface DockIconProps {
   mouseX?: MotionValue<number>;
   className?: string;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
+  id?: string;
+  'data-testid'?: string;
 }
 
 const DockIcon = ({
@@ -91,6 +102,9 @@ const DockIcon = ({
   mouseX,
   className,
   children,
+  style,
+  id,
+  'data-testid': dataTestId,
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const fallbackMouseX = useMotionValue(Infinity);
@@ -116,11 +130,13 @@ const DockIcon = ({
   return (
     <motion.div
       ref={ref}
-      style={{ width }}
+      style={{ width, ...style }}
       className={cn(
         'flex aspect-square cursor-pointer items-center justify-center rounded-full',
         className,
       )}
+      id={id}
+      data-testid={dataTestId}
     >
       {children}
     </motion.div>
