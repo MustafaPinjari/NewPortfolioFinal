@@ -44,11 +44,14 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child, {
-            mouseX: mouseX,
-            magnification: magnification,
-            distance: distance,
-          });
+          return React.cloneElement(
+            child as React.ReactElement<DockIconProps>,
+            {
+              mouseX: mouseX,
+              magnification: magnification,
+              distance: distance,
+            },
+          );
         }
         return child;
       });
@@ -90,8 +93,9 @@ const DockIcon = ({
   children,
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const fallbackMouseX = useMotionValue(Infinity);
 
-  const distanceCalc = useTransform(mouseX, (val: number) => {
+  const distanceCalc = useTransform(mouseX ?? fallbackMouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
     return val - bounds.x - bounds.width / 2;
