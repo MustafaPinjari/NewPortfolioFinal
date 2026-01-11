@@ -10,10 +10,10 @@ export function WorkRight({ children, progress }: WorkProps) {
 
   return (
     <div
-      className="flex h-screen flex-1 justify-center lg:items-center overflow-hidden"
+      className="flex h-screen flex-1 justify-center lg:items-center overflow-hidden w-full"
       style={{ transform: `translateY(${translateY}px)` }}
     >
-      <div className="w-full max-w-full px-2 sm:px-4 pt-10 md:px-6 lg:pt-0 lg:max-w-4xl xl:max-w-5xl">
+      <div className="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-[45vw] px-2 sm:px-4 pt-10 md:px-6 lg:pt-0">
         {children}
       </div>
     </div>

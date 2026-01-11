@@ -24,14 +24,15 @@ export default function WorkContent({ work, progress = 0 }: WorkContentProps) {
       </WorkLeft>
       <WorkRight progress={progress}>
         <div className="drop-shadow-2xl sm:mt-10 md:mt-24 w-full overflow-hidden">
-          <div className="w-full max-w-none">
+          <div className="w-full max-w-full overflow-hidden">
             <Image
               src={image.src}
               alt={title}
               width={image.width}
               height={image.height}
-              className="w-full h-auto object-contain max-w-full"
+              className="w-full h-auto object-contain max-w-full block"
               priority
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
           </div>
         </div>
