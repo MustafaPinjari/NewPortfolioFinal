@@ -1,0 +1,37 @@
+{
+  "name": "Mustafa Pinjari - Full Stack Developer",
+  "short_name": "Mustafa Pinjari",
+  "description": "Portfolio of Mustafa Pinjari - Co-founder at Techentrance, Full Stack Developer specializing in modern web technologies",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "developer"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

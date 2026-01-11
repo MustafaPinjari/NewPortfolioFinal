@@ -13,7 +13,7 @@ export function WorkRight({ children, progress }: WorkProps) {
       className="flex h-screen flex-1 justify-center lg:items-center"
       style={{ transform: `translateY(${translateY}px)` }}
     >
-      <div className="w-full max-w-md px-10 pt-10 md:px-0 lg:pt-0">
+      <div className="w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 pt-10 md:px-6 lg:pt-0">
         {children}
       </div>
     </div>

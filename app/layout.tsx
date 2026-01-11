@@ -16,6 +16,22 @@ export const metadata: Metadata = {
   },
   description: 'Co-founder @ Techentrance | Building for the web',
   metadataBase: new URL('https://mustafapinjari.vercel.app'),
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Mustafa Pinjari',
+  },
 };
 
 interface RootLayoutProps {
@@ -25,28 +41,6 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning className={mukta.className}>
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/static/favicons/favicon.ico"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/static/favicons/favicon.ico"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/static/favicons/favicon.ico"
-        />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      </head>
       <body
         className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white"
         suppressHydrationWarning

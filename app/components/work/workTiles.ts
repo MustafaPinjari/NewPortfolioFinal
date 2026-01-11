@@ -13,36 +13,63 @@ export const workTiles: WorkTile[] = [
     description: `Here are things`,
     title: `I've worked on`,
     image: {
-      src: '/static/images/aphex-apps.webp',
-      width: 600,
-      height: 770,
+      src: '/static/images/project/OverAll.png',
+      width: 1200,
+      height: 1500,
     },
   },
   {
     description: 'I built',
-    title: 'Aphex Field',
+    title: 'Infinite Tsukuyomi',
     image: {
-      src: '/static/images/field-app.webp',
-      width: 600,
-      height: 554,
+      src: '/static/images/project/IT.png',
+      width: 1600,
+      height: 1800,
     },
   },
   {
     description: `I maintained`,
-    title: 'Aphex Planner',
+    title: 'Emit',
     image: {
-      src: '/static/images/planner-app.webp',
-      width: 600,
-      height: 717,
+      src: '/static/images/project/Emit.png',
+      width: 1200,
+      height: 1400,
     },
   },
   {
     description: `I built`,
-    title: 'Aphex Publication',
+    title: 'Guesture Flow',
     image: {
-      src: '/static/images/publication-app.webp',
-      width: 600,
-      height: 717,
+      src: '/static/images/project/GF.png',
+      width: 1200,
+      height: 1400,
+    },
+  },
+  {
+    description: `I built`,
+    title: 'NextGenCV',
+    image: {
+      src: '/static/images/project/NextGenCV.png',
+      width: 1200,
+      height: 1400,
+    },
+  },
+  {
+    description: `I built`,
+    title: 'ExoPlanet',
+    image: {
+      src: '/static/images/project/EP.png',
+      width: 1200,
+      height: 1400,
+    },
+  },
+  {
+    description: `I built`,
+    title: 'RetroGames',
+    image: {
+      src: '/static/images/project/RG.png',
+      width: 1200,
+      height: 1400,
     },
   },
 ];

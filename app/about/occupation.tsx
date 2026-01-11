@@ -17,7 +17,7 @@ export default function Occupation() {
           height={130}
           width={130}
           src="/static/images/avatar.webp"
-          className="rounded-full object-scale-down grayscale"
+          className="rounded-full object-scale-down"
         />
       </div>
     </section>

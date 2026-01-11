@@ -22,8 +22,6 @@ export interface DockProps extends VariantProps<typeof dockVariants> {
 
 const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
-const MOBILE_MAGNIFICATION = 45;
-const MOBILE_DISTANCE = 100;
 
 const dockVariants = cva(
   'mx-auto w-max mt-8 h-[58px] sm:h-[66px] lg:h-[74px] p-2 sm:p-3 flex gap-1 sm:gap-2 lg:gap-3 rounded-xl sm:rounded-2xl border supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md',
@@ -112,11 +110,8 @@ const DockIcon = ({
   const fallbackMouseX = useMotionValue(Infinity);
 
   // Use smaller magnification and distance on mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const effectiveMagnification = isMobile
-    ? MOBILE_MAGNIFICATION
-    : magnification;
-  const effectiveDistance = isMobile ? MOBILE_DISTANCE : distance;
+  const effectiveMagnification = magnification;
+  const effectiveDistance = distance;
 
   const distanceCalc = useTransform(mouseX ?? fallbackMouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
@@ -127,11 +122,7 @@ const DockIcon = ({
   const widthSync = useTransform(
     distanceCalc,
     [-effectiveDistance, 0, effectiveDistance],
-    [
-      isMobile ? 40 : 50,
-      effectiveMagnification + (isMobile ? 10 : 20),
-      isMobile ? 40 : 50,
-    ],
+    [40, effectiveMagnification + 15, 40],
   );
 
   const width = useSpring(widthSync, {
