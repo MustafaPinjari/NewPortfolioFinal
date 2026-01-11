@@ -54,10 +54,14 @@ export default function Hero() {
                 texts={[
                   'I build things for the web.',
                   'I create digital experiences.',
+                  'I develop modern applications.',
+                  'I craft innovative solutions.',
+                  'I design user interfaces.',
+                  'I build scalable systems.',
                   'I solve complex problems.',
                   'I turn ideas into reality.',
                 ]}
-                duration={2500}
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-medium text-gray-600 dark:text-gray-400 h-8 sm:h-10 md:h-12 lg:h-16 xl:h-20 2xl:h-24"
               />
             </motion.h2>
           </motion.div>

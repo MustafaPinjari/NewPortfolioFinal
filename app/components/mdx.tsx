@@ -1,6 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef } from 'react';
+import { Highlighter } from './ui/highlighter';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -120,6 +121,7 @@ export const components = {
       {...props}
     />
   ),
+  Highlighter,
 };
 
 export function CustomMDX(props: MDXRemoteProps) {

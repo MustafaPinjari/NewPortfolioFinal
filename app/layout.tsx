@@ -8,6 +8,7 @@ import { mukta } from './fonts';
 import './tailwind.css';
 import LogRocketProvider from './components/logrocket-provider';
 import { PerformanceMonitor } from './components/ui/performance-monitor';
+import { SmoothCursor } from './components/ui/smooth-cursor';
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     default: 'Mustafa Pinjari',
   },
   description: 'Co-founder @ Techentrance | Building for the web',
-  metadataBase: new URL('https://mustafapinjari.vercel.app'),
+  metadataBase: new URL('https://mustafapinjari.live'),
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           defaultTheme="dark"
           themes={['dark', 'light']}
         >
+          <SmoothCursor />
           <LenisProvider>
             <ThemeSwitch />
             {children}
