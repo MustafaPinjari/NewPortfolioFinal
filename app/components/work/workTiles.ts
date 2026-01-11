@@ -14,8 +14,8 @@ export const workTiles: WorkTile[] = [
     title: `I've worked on`,
     image: {
       src: '/static/images/project/OverAll.png',
-      width: 1200,
-      height: 1500,
+      width: 1400,
+      height: 1600,
     },
   },
   {
@@ -23,8 +23,8 @@ export const workTiles: WorkTile[] = [
     title: 'Infinite Tsukuyomi',
     image: {
       src: '/static/images/project/IT.png',
-      width: 1600,
-      height: 1800,
+      width: 1400,
+      height: 2400,
     },
   },
   {
@@ -32,8 +32,8 @@ export const workTiles: WorkTile[] = [
     title: 'Emit',
     image: {
       src: '/static/images/project/Emit.png',
-      width: 1200,
-      height: 1400,
+      width: 1400,
+      height: 2200,
     },
   },
   {
@@ -41,8 +41,8 @@ export const workTiles: WorkTile[] = [
     title: 'Guesture Flow',
     image: {
       src: '/static/images/project/GF.png',
-      width: 1200,
-      height: 1400,
+      width: 1400,
+      height: 2200,
     },
   },
   {
@@ -50,8 +50,8 @@ export const workTiles: WorkTile[] = [
     title: 'NextGenCV',
     image: {
       src: '/static/images/project/NextGenCV.png',
-      width: 1200,
-      height: 1400,
+      width: 1400,
+      height: 2200,
     },
   },
   {
@@ -59,8 +59,8 @@ export const workTiles: WorkTile[] = [
     title: 'ExoPlanet',
     image: {
       src: '/static/images/project/EP.png',
-      width: 1200,
-      height: 1400,
+      width: 1400,
+      height: 2200,
     },
   },
   {
@@ -68,8 +68,8 @@ export const workTiles: WorkTile[] = [
     title: 'RetroGames',
     image: {
       src: '/static/images/project/RG.png',
-      width: 1200,
-      height: 1400,
+      width: 1400,
+      height: 2200,
     },
   },
 ];

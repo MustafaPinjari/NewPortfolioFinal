@@ -42,7 +42,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning className={mukta.className}>
       <body
-        className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white"
+        className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white overflow-x-hidden"
         suppressHydrationWarning
       >
         <LogRocketProvider />
