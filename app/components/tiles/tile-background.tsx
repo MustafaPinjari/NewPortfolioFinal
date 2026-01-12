@@ -5,5 +5,5 @@ interface TileBackgroundProps {
 }
 
 export default function TileBackground({ children }: TileBackgroundProps) {
-  return <div className="absolute h-full w-full">{children}</div>;
+  return <div className="absolute inset-0 w-full h-full">{children}</div>;
 }

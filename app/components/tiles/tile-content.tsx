@@ -6,6 +6,6 @@ interface TileContentProps {
 
 export const TileContent = ({ children }: TileContentProps) => {
   return (
-    <div className="sticky top-0 h-screen overflow-hidden">{children}</div>
+    <div className="relative w-full h-full overflow-hidden">{children}</div>
   );
 };

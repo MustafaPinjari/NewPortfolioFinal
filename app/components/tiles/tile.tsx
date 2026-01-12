@@ -13,20 +13,40 @@ interface TileProps {
 
 export const Tile = ({ page, children }: TileProps) => {
   const { currentPage, numOfPages } = useContext(TileContext);
-  const progress = Math.max(0, currentPage - page);
 
-  let opacity = Math.min(1, Math.max(0, progress * 4));
+  // Calculate progress for this tile
+  const progress = Math.max(0, Math.min(1, currentPage - page + 1));
 
-  if (progress > 0.85 && page < numOfPages - 1) {
-    opacity = Math.max(0, (1.0 - progress) * 4);
+  // Calculate opacity - show tile when currentPage is close to this page
+  let opacity = 0;
+
+  // Show tile when we're within 0.5 pages of it
+  const distance = Math.abs(currentPage - page);
+
+  if (distance <= 0.5) {
+    opacity = 1;
+  } else if (distance <= 1) {
+    // Fade out as we move away
+    opacity = 1 - (distance - 0.5) * 2;
+  }
+
+  // Ensure first tile is visible at the start
+  if (page === 0 && currentPage <= 0.5) {
+    opacity = 1;
+  }
+
+  // Ensure last tile is visible at the end
+  if (page === numOfPages - 1 && currentPage >= numOfPages - 1.5) {
+    opacity = 1;
   }
 
   return (
     <div
-      className="absolute top-0 w-full"
+      className="absolute inset-0 w-full h-full"
       style={{
-        opacity,
-        pointerEvents: progress >= 0 || progress >= 1 ? 'none' : undefined,
+        opacity: Math.max(0, Math.min(1, opacity)),
+        pointerEvents: opacity > 0.1 ? 'auto' : 'none',
+        transition: 'opacity 0.4s ease-in-out',
       }}
     >
       {cloneElement(children, {
