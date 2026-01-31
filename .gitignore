@@ -6,6 +6,10 @@
 .pnp.js
 .env
 
+# package manager lockfiles (keep package-lock.json, ignore others)
+bun.lock
+yarn.lock
+
 # testing
 /coverage
 
@@ -35,7 +39,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
 
 # Contentlayer
 .contentlayer

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { workTiles } from './workTiles';
 import { WorkCard } from './work-card';
 
@@ -15,19 +15,19 @@ export default function WorkSection() {
   const mouseEndX = useRef<number>(0);
 
   // Navigation functions
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentIndex((prev) => (prev + 1) % workTiles.length);
     setTimeout(() => setIsTransitioning(false), 300);
-  };
+  }, [isTransitioning]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentIndex((prev) => (prev - 1 + workTiles.length) % workTiles.length);
     setTimeout(() => setIsTransitioning(false), 300);
-  };
+  }, [isTransitioning]);
 
   const goToSlide = (index: number) => {
     if (isTransitioning || index === currentIndex) return;
@@ -109,7 +109,7 @@ export default function WorkSection() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [goToNext, goToPrevious]);
 
   // Auto-play
   useEffect(() => {
@@ -122,7 +122,7 @@ export default function WorkSection() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, isTransitioning, isPaused]);
+  }, [currentIndex, isTransitioning, isPaused, goToNext]);
 
   return (
     <section

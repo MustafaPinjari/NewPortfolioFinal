@@ -62,7 +62,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/static/(.*)',
+        source: '/static/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -71,7 +71,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/(.*\\.(js|css|woff|woff2|ttf|otf|eot))',
+        source: '/:path*\\.(js|css|woff|woff2|ttf|otf|eot)',
         headers: [
           {
             key: 'Cache-Control',
