@@ -1,0 +1,42 @@
+import Image from 'next/image';
+import { WorkContainer } from './work-container';
+import { WorkLeft } from './work-left';
+import { WorkRight } from './work-right';
+import { WorkTile } from './workTiles';
+
+interface WorkContentProps {
+  work: WorkTile;
+  progress?: number;
+}
+
+export default function WorkContent({ work, progress = 0 }: WorkContentProps) {
+  const { title, description, image } = work;
+
+  return (
+    <WorkContainer>
+      <WorkLeft progress={progress}>
+        <div className="text-2xl font-medium md:text-3xl xl:text-4xl">
+          {description}
+        </div>
+        <span className="text-4xl font-bold tracking-tight md:text-5xl xl:text-6xl">
+          {title}
+        </span>
+      </WorkLeft>
+      <WorkRight progress={progress}>
+        <div className="drop-shadow-2xl sm:mt-10 md:mt-24 w-full overflow-hidden">
+          <div className="w-full max-w-full overflow-hidden">
+            <Image
+              src={image.src}
+              alt={title}
+              width={image.width}
+              height={image.height}
+              className="w-full h-auto object-contain max-w-full block"
+              priority
+              style={{ maxWidth: '100%', height: 'auto' }}
+            />
+          </div>
+        </div>
+      </WorkRight>
+    </WorkContainer>
+  );
+}
