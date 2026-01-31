@@ -10,14 +10,36 @@ import LogRocketProvider from './components/logrocket-provider';
 import { PerformanceMonitor } from './components/ui/performance-monitor';
 import { SmoothCursor } from './components/ui/smooth-cursor';
 import PersonSchema from './components/seo/PersonSchema';
+import WebsiteSchema from './components/seo/WebsiteSchema';
+import OrganizationSchema from './components/seo/OrganizationSchema';
 
 export const metadata: Metadata = {
   title: {
     template: '%s | Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
     default: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
   },
-  description: 'Mustafa Pinjari - Co-founder @ Techentrance | Full Stack Developer | Tech Enthusiast | Building innovative web solutions',
-  keywords: ['Mustafa Pinjari', 'Techentrance', 'Full Stack Developer', 'Web Developer', 'Portfolio', 'Tech Entrepreneur'],
+  description: 'Mustafa Pinjari - Co-founder @ Techentrance | Full Stack Developer | Tech Enthusiast | Building innovative web solutions with React, Next.js, Node.js, and modern technologies',
+  keywords: [
+    'Mustafa Pinjari', 
+    'Techentrance', 
+    'Full Stack Developer', 
+    'Web Developer', 
+    'React Developer',
+    'Next.js Developer',
+    'Node.js Developer',
+    'JavaScript Developer',
+    'TypeScript Developer',
+    'Portfolio', 
+    'Tech Entrepreneur',
+    'Frontend Developer',
+    'Backend Developer',
+    'Software Engineer',
+    'Web Development',
+    'Modern Web Technologies'
+  ],
+  authors: [{ name: 'Mustafa Pinjari', url: 'https://mustafapinjari.live' }],
+  creator: 'Mustafa Pinjari',
+  publisher: 'Mustafa Pinjari',
   metadataBase: new URL('https://mustafapinjari.live'),
   openGraph: {
     title: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
@@ -40,13 +62,17 @@ export const metadata: Metadata = {
     title: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
     description: 'Co-founder @ Techentrance | Building innovative web solutions',
     images: ['/static/images/og-image.png'],
+    creator: '@mustafapinjari',
+    site: '@mustafapinjari',
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -61,18 +87,39 @@ export const metadata: Metadata = {
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
+    shortcut: '/favicon.ico',
   },
   manifest: '/site.webmanifest',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
     title: 'Mustafa Pinjari',
+    startupImage: [
+      {
+        url: '/static/images/apple-startup-640x1136.png',
+        media: '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://mustafapinjari.live',
     types: {
-      'application/rss+xml': 'https://mustafapinjari.live/feed.xml',
+      'application/rss+xml': [
+        { url: 'https://mustafapinjari.live/feed.xml', title: 'Mustafa Pinjari RSS Feed' }
+      ],
     },
+  },
+  category: 'technology',
+  classification: 'Portfolio Website',
+  other: {
+    'theme-color': '#000000',
+    'color-scheme': 'dark light',
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'format-detection': 'telephone=no',
+    'msapplication-TileColor': '#000000',
+    'msapplication-config': '/browserconfig.xml',
   },
 };
 
@@ -89,6 +136,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <LogRocketProvider />
         <PersonSchema />
+        <WebsiteSchema />
+        <OrganizationSchema />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

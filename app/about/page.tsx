@@ -6,6 +6,7 @@ import { CustomMDX } from '../components/mdx';
 import { readMDXFile } from '../thoughts/utils';
 import GithubContributions from './github-contributions/github-contributions';
 import Occupation from './occupation';
+import BreadcrumbSchema from '../components/seo/BreadcrumbSchema';
 
 const contentPath = path.join(process.cwd(), 'app', 'about', 'content.mdx');
 const { content } = readMDXFile(contentPath);
@@ -36,8 +37,14 @@ export const metadata = {
 };
 
 export default function Page() {
+  const breadcrumbItems = [
+    { name: 'Home', url: 'https://mustafapinjari.live' },
+    { name: 'About', url: 'https://mustafapinjari.live/about' },
+  ];
+
   return (
     <Fragment>
+      <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
       <Occupation />
       <CustomMDX source={content} />

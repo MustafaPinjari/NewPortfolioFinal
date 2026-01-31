@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       'lucide-react',
       '@radix-ui/react-icons',
     ],
+    webVitalsAttribution: ['CLS', 'LCP'],
   },
 
   // Image optimization
@@ -16,6 +17,9 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Compression
@@ -51,6 +55,10 @@ const nextConfig: NextConfig = {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
           },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
         ],
       },
       {
@@ -62,12 +70,50 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/(.*\\.(js|css|woff|woff2|ttf|otf|eot))',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=43200',
+          },
+        ],
+      },
+      {
+        source: '/feed.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, stale-while-revalidate=1800',
+          },
+        ],
+      },
     ];
   },
 
-  // Redirects for performance
+  // Redirects for SEO
   async redirects() {
-    return [];
+    return [
+      {
+        source: '/blog/:path*',
+        destination: '/thoughts/:path*',
+        permanent: true,
+      },
+      {
+        source: '/portfolio',
+        destination: '/projects',
+        permanent: true,
+      },
+    ];
   },
 
   // Rewrites for optimization
@@ -90,6 +136,13 @@ const nextConfig: NextConfig = {
   // Compiler options
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Logging
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 
