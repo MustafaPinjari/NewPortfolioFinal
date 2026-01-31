@@ -2,22 +2,25 @@
 
 ## Quick Fix for Current Build Issue
 
-The build is failing because of a package manager mismatch. Here's how to fix it:
+The build was failing due to package manager issues. The solution is to use npm (default) which is most reliable on Vercel.
 
-### Option 1: Force Bun Usage (Recommended)
-1. In your Vercel dashboard, go to Project Settings
-2. Navigate to "General" → "Build & Development Settings"
-3. Set the "Install Command" to: `bun install`
-4. Set the "Build Command" to: `bun run build`
+### ✅ Current Configuration
+- **Package Manager**: npm (default, most reliable)
+- **Build Command**: `npm run build` (automatic)
+- **Install Command**: `npm install` (automatic)
 
-### Option 2: Switch Back to Yarn
-If you prefer to use Yarn, update the `packageManager` field in `package.json`:
+### Alternative Options
+
+#### Option 1: Use Yarn
+If you prefer Yarn, add this to `package.json`:
 ```json
 "packageManager": "yarn@1.22.22"
 ```
 
-### Option 3: Use npm (Default)
-Remove the `packageManager` field entirely from `package.json` to use npm.
+#### Option 2: Use Bun (Advanced)
+For Bun, you need to set custom commands in Vercel:
+- Install Command: `bun install`
+- Build Command: `bunx next build`
 
 ## Environment Variables
 
