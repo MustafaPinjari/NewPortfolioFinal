@@ -126,6 +126,7 @@ export default function WorkSection() {
 
   return (
     <section
+      id="work"
       className="relative bg-background py-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}

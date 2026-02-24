@@ -15,10 +15,10 @@ import OrganizationSchema from './components/seo/OrganizationSchema';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
-    default: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
+    template: '%s | Mustafa Pinjari - Django, AI & Web Development Expert',
+    default: 'Mustafa Pinjari | Django, AI & Web Development Expert',
   },
-  description: 'Mustafa Pinjari - Co-founder @ Techentrance | Full Stack Developer | Tech Enthusiast | Building innovative web solutions with React, Next.js, Node.js, and modern technologies',
+  description: 'Mustafa Pinjari - Expert in Django, AI, Web Development & Generative Tech. Co-founder @ Techentrance building innovative solutions with Python & React.',
   keywords: [
     'Mustafa Pinjari', 
     'Techentrance', 
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   publisher: 'Mustafa Pinjari',
   metadataBase: new URL('https://mustafapinjari.live'),
   openGraph: {
-    title: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
-    description: 'Co-founder @ Techentrance | Building innovative web solutions and sharing knowledge in the tech community',
+    title: 'Mustafa Pinjari | Django, AI & Web Development Expert',
+    description: 'Mustafa Pinjari - Expert in Django, AI, Web Development, and Generative Tech. Co-founder @ Techentrance building innovative solutions.',
     url: 'https://mustafapinjari.live',
     siteName: 'Mustafa Pinjari',
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: '/static/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
+        alt: 'Mustafa Pinjari | Django, AI & Web Development Expert',
       },
     ],
     locale: 'en_US',
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mustafa Pinjari - Full Stack Developer & Tech Entrepreneur',
-    description: 'Co-founder @ Techentrance | Building innovative web solutions',
+    title: 'Mustafa Pinjari | Django, AI & Web Development Expert',
+    description: 'Mustafa Pinjari - Expert in Django, AI, Web Development, and Generative Tech. Building innovative solutions.',
     images: ['/static/images/og-image.png'],
     creator: '@mustafapinjari',
     site: '@mustafapinjari',

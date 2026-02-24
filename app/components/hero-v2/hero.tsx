@@ -189,9 +189,10 @@ export default function Hero() {
           >
             {[
               { href: '/projects', label: 'Projects' },
-              { href: '/thoughts', label: 'Thoughts' },
+              { href: '/thoughts', label: 'Blog' },
               { href: '/uses', label: 'Uses' },
               { href: '/stats', label: 'Stats' },
+              { href: '#contact', label: 'Contact' },
             ].map((link) => (
               <Link
                 key={link.href}

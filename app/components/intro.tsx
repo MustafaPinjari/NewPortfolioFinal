@@ -42,26 +42,26 @@ export default function Intro() {
     >
       <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold tracking-tight md:py-28 md:text-6xl lg:px-20 lg:py-3 lg:text-7xl">
         <div className="leading-[1.15]">
-          <div
+          <h2
             className="intro-text"
             style={{ opacity: opacityForBlock(progress, 0) }}
           >
             I love coding.
-          </div>
-          <span
+          </h2>
+          <h3
             className="intro-text inline-block after:content-['_']"
             style={{ opacity: opacityForBlock(progress, 1) }}
           >
             I use my passion and skills to build digital products and
             experiences.
-          </span>
-          <span
+          </h3>
+          <h3
             className="intro-text inline-block"
             style={{ opacity: opacityForBlock(progress, 2) }}
           >
             I&apos;m passionate about cutting-edge, pixel perfect UI and
             intuitively implemented UX.
-          </span>
+          </h3>
         </div>
       </div>
     </div>

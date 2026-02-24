@@ -251,7 +251,10 @@ const Icons = {
 
 export default function Skills() {
   return (
-    <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden py-12 sm:py-16 lg:py-20">
+    <section 
+      id="skills"
+      className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden py-12 sm:py-16 lg:py-20"
+    >
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:3rem_3rem] lg:bg-[size:4rem_4rem] opacity-20"></div>
 
