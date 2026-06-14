@@ -8,16 +8,34 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { BlogPost } from './types';
 
+type FrontmatterValue = string | boolean | string[];
+
+interface FrontmatterMetadata {
+  title?: string;
+  summary?: string;
+  description?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+  author?: string;
+  tags?: string[];
+  category?: string;
+  image?: string;
+  featuredImage?: string;
+  keywords?: string[];
+  draft?: boolean;
+  [key: string]: FrontmatterValue | undefined;
+}
+
 /**
  * Parse frontmatter from MDX content
  */
 function parseFrontmatter(fileContent: string): {
-  metadata: Record<string, any>;
+  metadata: FrontmatterMetadata;
   content: string;
 } {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
-  
+
   if (!match) {
     return { metadata: {}, content: fileContent };
   }
@@ -25,14 +43,14 @@ function parseFrontmatter(fileContent: string): {
   const frontMatterBlock = match[1];
   const content = fileContent.replace(frontmatterRegex, '').trim();
   const frontMatterLines = frontMatterBlock.trim().split('\n');
-  const metadata: Record<string, any> = {};
+  const metadata: FrontmatterMetadata = {};
 
   frontMatterLines.forEach((line) => {
     const [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
     const trimmedKey = key.trim();
-    
+
     if (trimmedKey === 'draft') {
       metadata[trimmedKey] = value === 'true';
     } else if (trimmedKey === 'tags') {
@@ -89,8 +107,12 @@ export function getAllBlogPosts(): BlogPost[] {
       title: metadata.title || '',
       description: metadata.summary || metadata.description || '',
       content,
-      publishedAt: metadata.publishedAt ? new Date(metadata.publishedAt) : new Date(),
-      updatedAt: metadata.updatedAt ? new Date(metadata.updatedAt) : new Date(metadata.publishedAt || Date.now()),
+      publishedAt: metadata.publishedAt
+        ? new Date(metadata.publishedAt)
+        : new Date(),
+      updatedAt: metadata.updatedAt
+        ? new Date(metadata.updatedAt)
+        : new Date(metadata.publishedAt || Date.now()),
       author: metadata.author || 'Mustafa Pinjari',
       tags: metadata.tags || [],
       category: metadata.category || 'Uncategorized',
@@ -107,7 +129,7 @@ export function getAllBlogPosts(): BlogPost[] {
     .filter((post) => {
       const rawContent = fs.readFileSync(
         path.join(postsDirectory, `${post.slug}.mdx`),
-        'utf-8'
+        'utf-8',
       );
       const { metadata } = parseFrontmatter(rawContent);
       return !metadata.draft;
@@ -140,8 +162,12 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
     title: metadata.title || '',
     description: metadata.summary || metadata.description || '',
     content,
-    publishedAt: metadata.publishedAt ? new Date(metadata.publishedAt) : new Date(),
-    updatedAt: metadata.updatedAt ? new Date(metadata.updatedAt) : new Date(metadata.publishedAt || Date.now()),
+    publishedAt: metadata.publishedAt
+      ? new Date(metadata.publishedAt)
+      : new Date(),
+    updatedAt: metadata.updatedAt
+      ? new Date(metadata.updatedAt)
+      : new Date(metadata.publishedAt || Date.now()),
     author: metadata.author || 'Mustafa Pinjari',
     tags: metadata.tags || [],
     category: metadata.category || 'Uncategorized',
